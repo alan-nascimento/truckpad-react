@@ -8,12 +8,31 @@
   background: #fff;
   border: 1px solid #ddd;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.trucker-list strong {
+  font-size: 25px;
+  font-weight: 500;
 }
 
 .trucker-list p {
   font-size: 16px;
-  color: #999;
+  font-weight: 500;
+  color: #333;
   margin-top: 5px;
   line-height: 24px;
+}
+
+.trucker-list span {
+  font-weight: 100;
+}
+
+.trucker-list span::before {
+  content: " ";
+}
+
+.edit-icon {
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
