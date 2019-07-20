@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Fab from '@material-ui/core/Fab';
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import { Edit } from '@material-ui/icons/index';
+import { Button } from '@material-ui/core';
+import Delete from '@material-ui/icons/Delete';
 
 import './Truckers.scss';
 
@@ -12,17 +9,22 @@ export default function Truckers() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://localhost:3333/truckers');
+      const response = await fetch('http://localhost:8080/truckers');
       const data = await response.json();
       setTruckers(data);
     }
     fetchData();
   }, []);
 
+  const deleteTrucker = async (id) => {
+    await fetch(`http://localhost:8080/truckers/${id}`, { method: 'DELETE' }).catch(err => console.log(err));
+    setTruckers(truckers.filter(trucker => trucker._id !== id));
+  };
+
   return (
     <div className="trucker-list">
       {truckers.map(trucker => (
-        <article key={trucker.id}>
+        <article key={trucker._id}>
           <strong>{trucker.name}</strong>
           <p>
             Telefone:
@@ -44,16 +46,9 @@ export default function Truckers() {
             CPF:
             <span>{trucker.documents[1].number}</span>
           </p>
-          <Tooltip title="Delete">
-            <IconButton aria-label="Delete">
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Edit" aria-label="Edit">
-            <Fab className="edit-icon">
-              <Edit />
-            </Fab>
-          </Tooltip>
+          <Button type="button" onClick={() => deleteTrucker(trucker._id)}>
+            <Delete />
+          </Button>
         </article>
       ))}
     </div>
