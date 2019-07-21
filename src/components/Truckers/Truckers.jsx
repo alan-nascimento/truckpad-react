@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@material-ui/core';
 import Delete from '@material-ui/icons/Delete';
+import AddTruckerForm from '../AddTruckerForm/AddTruckerForm';
 
 import './Truckers.scss';
 
@@ -11,10 +12,22 @@ export default function Truckers() {
     async function fetchData() {
       const response = await fetch('http://localhost:8080/truckers');
       const data = await response.json();
-      setTruckers(data);
+      setTruckers(data.reverse());
     }
     fetchData();
   }, []);
+
+  const addTrucker = async (trucker) => {
+    await fetch('http://localhost:8080/truckers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(trucker),
+    })
+      .then(res => res.json())
+      .catch(err => console.log(err));
+
+    setTruckers([trucker, ...truckers]);
+  };
 
   const deleteTrucker = async (id) => {
     await fetch(`http://localhost:8080/truckers/${id}`, { method: 'DELETE' }).catch(err => console.log(err));
@@ -23,6 +36,7 @@ export default function Truckers() {
 
   return (
     <div className="trucker-list">
+      <AddTruckerForm addTrucker={addTrucker} />
       {truckers.map(trucker => (
         <article key={trucker._id}>
           <strong>{trucker.name}</strong>
