@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import Delete from '@material-ui/icons/Delete';
-import Edit from '@material-ui/icons/Edit';
+import { Delete, Edit } from '@material-ui/icons';
 
 import './Truckers.scss';
 
@@ -17,7 +16,13 @@ export default function Truckers(props) {
           </p>
           <p>
             Data de nascimento:
-            <span>{trucker.birthDate}</span>
+            <span>
+              {new Date(trucker.birthDate).getDate()}
+/
+              {new Date(trucker.birthDate).getMonth()}
+/
+              {new Date(trucker.birthDate).getFullYear()}
+            </span>
           </p>
           <p>
             CNH:
