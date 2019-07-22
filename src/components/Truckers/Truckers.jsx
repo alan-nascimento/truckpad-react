@@ -19,7 +19,7 @@ export default function Truckers(props) {
             <span>
               {new Date(trucker.birthDate).getDate()}
 /
-              {new Date(trucker.birthDate).getMonth()}
+              {new Date(trucker.birthDate).getMonth() + 1}
 /
               {new Date(trucker.birthDate).getFullYear()}
             </span>
