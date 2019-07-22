@@ -9,7 +9,7 @@ export default function App() {
   const [truckers, setTruckers] = useState([]);
 
   async function fetchData() {
-    const response = await fetch('http://localhost:8080/truckers');
+    const response = await fetch('https://truckpad-api.herokuapp.com/truckers');
     const data = await response.json();
     setTruckers(data.reverse());
   }
@@ -19,7 +19,7 @@ export default function App() {
   }, []);
 
   const addTrucker = async (trucker) => {
-    await fetch('http://localhost:8080/truckers', {
+    await fetch('https://truckpad-api.herokuapp.com/truckers', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(trucker),
@@ -31,7 +31,7 @@ export default function App() {
   };
 
   const deleteTrucker = async (id) => {
-    fetch(`http://localhost:8080/truckers/${id}`, { method: 'DELETE' }).catch(err => console.log(err));
+    fetch(`https://truckpad-api.herokuapp.com/truckers/${id}`, { method: 'DELETE' }).catch(err => console.log(err));
     setEditing(false);
     setTruckers(truckers.filter(trucker => trucker._id !== id));
   };
@@ -55,7 +55,7 @@ export default function App() {
 
   const updateTrucker = async (id, object) => {
     setEditing(false);
-    await fetch(`http://localhost:8080/truckers/${id}`, {
+    await fetch(`https://truckpad-api.herokuapp.com/truckers/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(object),
