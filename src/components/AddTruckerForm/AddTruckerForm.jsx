@@ -46,7 +46,7 @@ export default function AddTruckerForm(props) {
       <label>Telefone</label>
       <input type="text" name="phone" value={trucker.phone} onChange={handleInputChange} />
       <label>Data de Nascimento</label>
-      <input type="text" name="birthDate" value={trucker.birthDate} onChange={handleInputChange} />
+      <input type="date" name="birthDate" value={trucker.birthDate} onChange={handleInputChange} />
       <label>CNH</label>
       <input type="text" name="cnhNumber" value={trucker.cnhNumber} onChange={handleInputChange} />
       <label>Categoria</label>
