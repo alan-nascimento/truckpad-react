@@ -54,7 +54,7 @@ export default function AddTruckerForm(props) {
       <label>CPF</label>
       <input type="text" name="cpfNumber" value={trucker.cpfNumber} onChange={handleInputChange} />
       <button type="submit" className="add-trucker">
-        Adicionar novo caminhoneiro
+        Adicionar
       </button>
     </form>
   );

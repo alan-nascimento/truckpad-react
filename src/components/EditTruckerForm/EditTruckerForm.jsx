@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import './EditTruckerForm.scss';
+
 export default function EditUserForm(props) {
   const [trucker, setTrucker] = useState(props.currentTrucker);
 
@@ -44,12 +46,14 @@ export default function EditUserForm(props) {
       <input type="text" name="category" value={trucker.category} onChange={handleInputChange} />
       <label>CPF</label>
       <input type="text" name="cpfNumber" value={trucker.cpfNumber} onChange={handleInputChange} />
-      <button type="submit" className="add-trucker">
-        Editar caminhoneiro
-      </button>
-      <button type="button" onClick={() => props.setEditing(false)} className="button muted-button">
-        Cancelar
-      </button>
+      <div className="edit-buttons">
+        <button type="submit" className="add-trucker">
+          Editar
+        </button>
+        <button type="button" onClick={() => props.setEditing(false)} className="cancel-button">
+          Cancelar
+        </button>
+      </div>
     </form>
   );
 }

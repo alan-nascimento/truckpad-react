@@ -66,11 +66,10 @@ export default function App() {
   };
 
   return (
-    <div className="App">
+    <div>
       <Header />
       {editing ? (
-        <div>
-          <h2>Edit Trucker</h2>
+        <div className="edit-form">
           <EditTruckerForm
             editing={editing}
             setEditing={setEditing}
@@ -80,7 +79,6 @@ export default function App() {
         </div>
       ) : (
         <div>
-          <h2>Add Trucker</h2>
           <AddTruckerForm addTrucker={addTrucker} />
         </div>
       )}

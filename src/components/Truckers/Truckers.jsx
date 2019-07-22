@@ -36,12 +36,14 @@ export default function Truckers(props) {
             CPF:
             <span>{trucker.documents[1].number}</span>
           </p>
-          <Button type="button" onClick={() => props.editRow(trucker)}>
-            <Edit />
-          </Button>
-          <Button type="button" onClick={() => props.deleteTrucker(trucker._id)}>
-            <Delete />
-          </Button>
+          <div className="trucker-buttons">
+            <Button type="button" onClick={() => props.editRow(trucker)}>
+              <Edit />
+            </Button>
+            <Button type="button" onClick={() => props.deleteTrucker(trucker._id)}>
+              <Delete />
+            </Button>
+          </div>
         </article>
       ))}
     </div>

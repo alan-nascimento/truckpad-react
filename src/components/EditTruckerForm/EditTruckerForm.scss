@@ -1,0 +1,41 @@
+.edit-form {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.edit-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  button {
+    width: 49%;
+  }
+  .cancel-button {
+    background-color: #ddd;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    height: 40px;
+    border: none;
+    margin: 10px 0;
+  }
+  .cancel-button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    background: #ddd;
+    transition: 0.3s;
+  }
+}
+
+input {
+  display: flex;
+  border: 1px solid #cdcdcd;
+  border-radius: 4px;
+  padding: 0.5rem;
+  outline: none;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  line-height: 1;
+}
